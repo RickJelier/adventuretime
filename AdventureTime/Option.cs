@@ -3,15 +3,17 @@
     public class Option
     {
         public string OptionText { get; set; }
-        public string OptionType { get; set; }
         public Item OptionItem { get; set; }
         public Location OptionDestination { get; set; }
         public Item Requires { get; set; }
 
-        public Option(string option, string type)
+        public Option(string option)
         {
             OptionText = option;
-            OptionType = type;
+        }
+
+        public virtual void Action(Option option)
+        {
         }
     }
 }

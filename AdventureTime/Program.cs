@@ -19,7 +19,8 @@ namespace AdventureTime
                     new Item("Spoon")
                 },
                 Options = new List<Option>(),
-                Destinations = new List<Location>()
+                Destinations = new List<Location>(),
+                CustomOptions = new List<CustomOption>()
             };
 
             Location hallway = new Location()
@@ -32,7 +33,8 @@ namespace AdventureTime
                     new Item("Flashlight")
                 },
                 Options = new List<Option>(),
-                Destinations = new List<Location>()
+                Destinations = new List<Location>(),
+                CustomOptions = new List<CustomOption>()
             };
 
             Location outside = new Location()
@@ -45,7 +47,8 @@ namespace AdventureTime
                     new Item("Stone")
                 },
                 Options = new List<Option>(),
-                Destinations = new List<Location>()
+                Destinations = new List<Location>(),
+                CustomOptions = new List<CustomOption>()
             };
 
             Location dungeon = new Location()
@@ -58,7 +61,8 @@ namespace AdventureTime
                     new Item("Empty bottle")
                 },
                 Options = new List<Option>(),
-                Destinations = new List<Location>()
+                Destinations = new List<Location>(),
+                CustomOptions = new List<CustomOption>()
             };
 
             Location lockedRoom = new Location()
@@ -67,16 +71,18 @@ namespace AdventureTime
                 Description = "Sealed tightly",
                 Items = new List<Item>(),
                 Options = new List<Option>(),
-                Destinations = new List<Location>()
+                Destinations = new List<Location>(),
+                CustomOptions = new List<CustomOption>()
             };
 
             Location winRoom = new Location()
             {
-                Name = "the end",
+                Name = "end",
                 Description = "Congratulations you beat the game!",
                 Items = new List<Item>(),
                 Options = new List<Option>(),
                 Destinations = new List<Location>(),
+                CustomOptions = new List<CustomOption>(),
                 LocationType = "ending"
             };
 
@@ -93,21 +99,21 @@ namespace AdventureTime
             kitchen.Items.Add(requiredItem);
             lockedRoom.Items.Add(winningItem);
 
-            Option dungeonOption = new Option("Use your knife to open the secret doorway", "custom");
+            CustomOption dungeonOption = new CustomOption("Use your knife to open the secret doorway");
             dungeonOption.Requires = requiredItem;
             dungeonOption.OptionDestination = lockedRoom;
-            dungeon.Options.Add(dungeonOption);
+            dungeon.CustomOptions.Add(dungeonOption);
 
-            Option kitchenOption = new Option("Put the egg in the fridge", "custom");
+            CustomOption kitchenOption = new CustomOption("Put the egg in the fridge");
             kitchenOption.Requires = winningItem;
             kitchenOption.OptionDestination = winRoom;
-            kitchen.Options.Add(kitchenOption);
+            kitchen.CustomOptions.Add(kitchenOption);
 
             Location.CurrentLocation = kitchen;
 
+
             while (_isRunning)
             {
-                Location.CurrentLocation.GenerateOptions();
                 Location.CurrentLocation.Show();
             }
         }

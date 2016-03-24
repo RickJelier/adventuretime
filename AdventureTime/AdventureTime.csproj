@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomOption.cs" />
+    <Compile Include="DestinationOption.cs" />
+    <Compile Include="Dialog.cs" />
     <Compile Include="Item.cs" />
+    <Compile Include="ItemOption.cs" />
     <Compile Include="Location.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Player.cs" />
